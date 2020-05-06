@@ -12,5 +12,5 @@ board.set(0, 1, Pieces.Cross);
 // Show what's in memory
 console.log(board.toString());
 
-// Get the piece at coordinates (0,1)
+// Get the piece at coordinates (1,2)
 console.log(board.get(1, 2));
