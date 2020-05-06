@@ -15,7 +15,7 @@ class Board {
   }
 
   get(x, y) {
-    // ...
+    return this._board[y][x]
   }
 
   set(x, y, piece) {
