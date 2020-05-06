@@ -1,11 +1,19 @@
 #!/usr/bin/env node
 
-const { Pieces, Board, Cursor, View, Input } = require('./classes');
+const {
+  Pieces,
+  Board,
+  Cursor,
+  View,
+  Input,
+  Result
+} = require('./classes');
 
 const board  = new Board();
 const cursor = new Cursor(board);
 const view   = new View();
 const input  = new Input();
+const result = new Result();
 
 let turn = Pieces.Cross;
 
@@ -33,4 +41,10 @@ input.addKeyListener(key => {
 
 setInterval(() => {
   view.render(board, cursor);
+  const thisRoundsResult = result.calculate(board);
+  if ( !thisRoundsResult ) return;
+
+  // Game is over!
+  console.log('\n' + thisRoundsResult);
+  process.exit();
 }, 33);
