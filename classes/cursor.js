@@ -14,7 +14,7 @@ class Cursor {
   }
 
   down() {
-    if ( this._position.y < board.getHeight() - 1 )
+    if ( this._position.y < this._board.getHeight() - 1 )
       this._position.y = this._position.y + 1;
   }
 
