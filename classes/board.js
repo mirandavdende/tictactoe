@@ -19,8 +19,8 @@ class Board {
   }
 
   set(x, y, piece) {
-    if ( !this._validCoordinate(x) ) throw "Invalid X coordinate";
-    if ( !this._validCoordinate(y) ) throw "Invalid Y coordinate";
+    if ( !this._validXCoordinate(x) ) throw "Invalid X coordinate";
+    if ( !this._validYCoordinate(y) ) throw "Invalid Y coordinate";
     if ( !this._validPiece(piece)  ) throw "Invalid piece";
 
     this._board[y][x] = piece;
@@ -30,12 +30,24 @@ class Board {
     return JSON.stringify(this._board);
   }
 
+  getWidth() {
+    return this._board[0].length;
+  }
+
+  getHeight() {
+    return this._board.length;
+  }
+
   _validPiece(piece) {
     return Object.values(Pieces).includes(piece);
   }
 
-  _validCoordinate(coord) {
-    return [ 0, 1, 2 ].includes(coord);
+  _validXCoordinate(coord) {
+    return coord > -1 && coord < this.getWidth();
+  }
+
+  _validYCoordinate(coord) {
+    // ...
   }
 
 }
